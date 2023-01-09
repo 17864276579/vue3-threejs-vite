@@ -117,6 +117,13 @@ onMounted(() => {
   containerRef.value?.appendChild(renderer.domElement)
   renderer.render(scene, camera)
 })
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight
+  //更新相机投影矩阵
+  camera.updateProjectionMatrix()
+  renderer.setSize(window.innerWidth, window.innerHeight)
+}, false)
 </script>
 
 <style lang="scss" scoped>
